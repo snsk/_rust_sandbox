@@ -7,8 +7,16 @@ fn main() {
     println!("Guess the number!");
 
     let secret_number = rand::thread_rng().gen_range(1..101);
+    let try_limit_count = 5;
+    let mut try_count = 0;
 
     loop {
+
+        if try_count >= try_limit_count{
+            println!("GAME OVER");
+            break;
+        }
+
         println!("Plese input your guess");
         let mut guess = String::new(); //mut mean the "mutable"
         io::stdin()
@@ -31,5 +39,7 @@ fn main() {
                 break;
             }
         }
+        try_count += 1;
+        println!("You have {} more tries left", 5 - try_count);
     }
 }
